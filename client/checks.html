@@ -1,0 +1,490 @@
+
+
+  <template name="checks">
+
+    <!--Header area start here-->
+    <div class="wd_scroll_wrap">
+      <header class="gc_main_menu_wrapper">
+        <div class="container-fluid">
+           <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                 <div class="logo-area">
+                    <a id="logo" href="/">
+                      <div class="active-logo">
+                        <img src="images/logo/logo.png" class="logo" style="max-width:70%">
+                      </div>
+                    </a>
+                 </div>
+              </div>
+              <!-- Mobile Menu  Start -->
+              <div class="col-lg-9 col-md-9 col-sm-12 col-xs-6">
+                 <div class="menu-area  hidden-xs">
+                    <nav class="wd_single_index_menu btc_main_menu">
+                       <ul>
+                     
+                          <!-- <li><a href="1">Exchange</a></li> -->
+                          <li><a href="#">Cheques</a></li>
+                          <li><a href="#">Accounts</a></li>
+                       </ul>
+                    </nav>
+
+                    <div class="login-btn">
+                       {{> loginButtons  align="right"}}
+                    </div>  
+                </div>
+                 <!-- mobile menu area start -->
+                 <div class="rp_mobail_menu_main_wrapper visible-xs">
+                    <div class="row">
+                       <div class="col-xs-12">
+                          <div id="toggle">
+                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px">
+                                <g>
+                                   <g>
+                                      <path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#fff"/>
+                                   </g>
+                                   <g>
+                                      <path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#fff"/>
+                                   </g>
+                                   <g>
+                                      <path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#fff"/>
+                                   </g>
+                                   <g>
+                                      <path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#fff"/>
+                                   </g>
+                                   <g>
+                                      <path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#fff"/>
+                                   </g>
+                                </g>
+                             </svg>
+                          </div>
+                       </div>
+                    </div>
+                    <div id="sidebar">
+                       <h1><a href="#">Ubetcoin</a></h1>
+                       <div id="toggle_close">&times;</div>
+                       <div id='cssmenu' class="wd_single_index_menu">
+                          <ul>
+                       
+                            <!-- <li><a href="1">Exchange</a></li> -->
+                            <li><a href="1">Cheques</a></li>
+                            <li><a href="2">Accounts</a></li>
+                          </ul>
+                       </div>
+                    </div>
+                 </div>
+                 <!-- Mobile Menu  End -->
+              </div>
+           </div>
+        </div>
+      </header>
+    </div>
+      
+    {{#if currentUser }}
+        <div section-scroll='0' class="wd_scroll_wrap">
+
+            <section class="check section">
+               <div class="container">
+                <div class='row'>
+                  
+                            
+                  <div class="col-md-12">
+                    
+                  </div>
+                    <div class='col-md-4 col-xs-2'></div>
+                    	<div class='col-md-12'>
+                          <br />
+                          <div class="center">
+                            <h2 class="modal-title my-modal-label">REGISTER NEW UBETCHECK</h2>
+                            <hr />
+                            <p class="h5">EXCHANGE: 1 UBET == <strong>$ {{coinValueInDollar}}</strong></p>
+                            {{#if validMetaMaskAddress}}
+                              <small>CONTRACT ADDRESS: <strong>{{coinContractAddress}}</strong></small><br />
+                            {{else}}
+                            
+                            <div class="alert alert-danger">
+                              PLEASE LOGIN TO METAMASK ADDRESS {{coinContractOwnerAddress}}
+                            </div>
+                              
+                            {{/if}}
+                          </div>
+                          <hr />
+                          
+        			           <form class="new-ubetcheck">
+                         
+                          <div class="col-lg-6 col-md-6 ">
+                            <div class='form-row'>
+                              <div class='col-xs-12 form-group required'>
+                                <label class='control-label'>Ether Beneficiary Address</label>
+                                <input class='form-control beneficiary-address' size='4' type='text' name='beneficiaryAddress' required />
+                              </div>
+                            </div>
+                            <div class='form-row'>
+                              <div class='col-xs-12 form-group card required'>
+                                <label class='control-label'>Account Number</label>
+                                <input autocomplete='off' class='form-control account-number' required size='20' type='text' name="accountNumber"  />
+                              </div>
+                            </div>
+                            <div class='form-row'>
+                              <div class='col-xs-12 form-group card required'>
+                                <label class='control-label'>Routing Number</label>
+                                <input autocomplete='off' class='form-control routing-number' required size='20' type='text' name="routingNumber" />
+                              </div>
+                            </div>
+                            <div class='form-row'>
+                              <div class='col-xs-12 form-group card required'>
+                                <label class='control-label'>Institution or Bank Name</label>
+                                <input autocomplete='off' class='form-control bank-name' required size='20' type='text' name="institution"  />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6 col-md-6 ">
+      		                	 <div class='form-row'>
+      	                        <div class='col-xs-12 form-group card required'>
+      	                          <label class='control-label'>Full Name</label>
+      	                          <input autocomplete='off' class='form-control fullname' required size='20' type='text' name="fullName"  />
+      	                        </div>
+      	                      </div>
+      	                      <div class='form-row'>
+      	                        <div class='col-xs-12 form-group card required'>
+      	                          <label class='control-label'>Amount in $$ ( No Decimal )</label>
+      	                          <input autocomplete='off' class='form-control amount' required size='20' type='number' name="amount" />
+                                  <small class="text-right token-convetion-lbl">Please enter dollar amount.</small>
+      	                        </div>
+      	                      </div>
+      	                      <div class='form-row'>
+      	                        <div class='col-xs-12 form-group card'>
+      	                          <label class='control-label'>Digital Check</label>
+      	                          <input type="file" class="file_bag" id="check-file" />
+                                  <input type="hidden" name="checkFilePath" id="check-file-path" />
+                                  <input type="hidden" name="fileChecksum" id="file-checksum" />
+                                  
+                                  <div class="loader" style="display: none">
+                                    uploading ... <img src="images/loader.gif" />
+                                  </div>
+                                  
+      	                        </div>
+      	                      </div>
+
+      	                      <div class='form-row new-registration-options-btn' style="">
+      	                        <div class='col-md-12 form-group'>
+                                  <input type="submit" value="Register" class="new-register-btn hide" />
+                                  <br />
+
+                                  <a class="btn btn-primary verify-record-link">Submit and Verify</a>
+      	                        </div>
+      	                      </div>
+      		                </div>
+      		                     
+                        </form>
+                            
+                        <br />
+                        <br />
+
+
+      	                    <div class='col-md-12'>
+      		                    <div class="row row_exch_history">
+                                <div class="row form_title">    
+                                  
+                                    <br />	            
+                                    
+                      	            {{totalUBetCheckAmounts}}
+                                    {{totalUBetCoinDistributed}}
+                                  
+                                    <h3>
+                                      Total UBET Check Amount: <span class="label label-default">$ {{TemplateVar.get 'totalUBetCheckAmounts'}}.00</span>
+                                    </h3>
+                                    <h3>
+                                      Total Coin Distributed From Checks: 
+                                      <span class="label label-default">{{TemplateVar.get 'totalUBetCoinDistributed'}} UBET <img src="images/logo/logo.png" width="25px" /></span>
+                                    </h3>
+
+                                    <hr />                              
+                                    <div class="float_left">UBET CHECK LISTING</div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+      					                  <div class="table_header_block">
+      					                    <table class="table table_exch">
+                                      <tbody>
+                                        <tr class="table_header">
+                                            <td class="th_time">Account No.</td>
+                                            <td class="th_gave">Routing No.</td>
+                                            <td class="th_gave">Institution</td>
+                                            <td class="th_received">Full Name</td>
+                                            <td class="th_averange">Amount</td>
+                                            <td class="th_averange">Status</td>
+                                        </tr>
+        
+                                        {{#each uBetChecks}}
+                                          <tr class="table_body progress">
+                                            <td width="15%">
+                                              {{accountNumber}}<br />
+                                              <small>{{beneficiaryAddress}}</small>
+                                            </td>
+                                            <td>{{routingNumber}}</td>
+                                            <td>{{institution}}</td>
+                                            <td>{{fullName}}</td>
+                                            <td>${{amount}} / {{tokenPurchase}} UBET</td>
+                                            <td>
+                                              <span id="status-{{txHash}}">
+                                                {{ubetCheckTxStatus(txHash)}}
+                                              </span>
+                                            </td>
+                                          </tr>
+                                        {{/each}}
+        
+                                      </tbody>
+      					                    </table>
+      					                </div>
+      					                <div class="row pages_block_wrap paginator" id="paginator"></div>
+      					              </div>
+      					            </div>
+                          </div>
+      	                </div>
+                        <div class='col-md-4 col-xs-2'></div>
+      	         </div>
+      	        </div>        
+      	    </section>
+            <section>
+            
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary show-modal-btn hide" data-toggle="modal" data-target="#verificationModal">
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="verificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      
+                      <h3 class="modal-title" id="exampleModalLongTitle">UBET CHECK ENTRY VERIFICATION</h3>
+                    </div>
+                    
+                    <div class="modal-body">
+                      
+                      <div class='col-xs-12 form-group required'>
+                        
+                        <label class='control-label'>Ether Beneficiary Address</label>
+                        <input class='form-control ver-beneficiary-address' size='4' disabled />
+                        
+                        <label class='control-label'>Account Number</label>
+                        <input autocomplete='off' class='form-control ver-account-number' size='20' type='text' disabled />
+                        
+                        <label class='control-label'>Routing Number</label>
+                        <input autocomplete='off' class='form-control ver-routing-number' size='20' type='text' disabled />
+                        
+                        <label class='control-label'>Institution or Bank Name</label>
+                        <input autocomplete='off' class='form-control ver-bank-name' size='20' type='text' disabled />
+                        
+                        <label class='control-label'>Full Name</label>
+                        <input autocomplete='off' class='form-control ver-fullname' size='20' type='text' disabled />
+                        
+                        <label class='control-label'>Amount in $$ ( No Decimal )</label>
+                        <input autocomplete='off' class='form-control ver-amount' required size='20' type='number' disabled />
+                        
+                        <label class='control-label'>Total Coin To Send</label>
+                        <input autocomplete='off' class='form-control ver-token-to-send' required size='20' type='text' disabled />
+                        
+                        <br />
+                        <img class="ver-digital-image" src="http://s3.amazonaws.com/s3-ubetcoin-user-signatures/cheques/o3ntxXvjmARWfCCwE.jpeg" />
+                      </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Modify</button>
+                      <button type="button" class="btn btn-primary modal-register-btn">Verified and Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>       
+        </div>
+    {{else}}
+            <div section-scroll='0' class="wd_scroll_wrap">
+              <section class="check section">
+                 <div class="container">
+                  <div class='row'>
+                     <div class="container">
+                        <div class="row">
+                          <div class="alert-group"><br>
+                              <div class="alert alert-danger alert-dismissable">
+                                  <strong>Please Login!</strong> You need to login to view this content. 
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+    {{/if}}
+      
+      <style>
+        
+  			h4{
+  			    text-align: center;
+  			    padding-top: 15px;
+  			    padding-bottom: 15px;
+  			}
+
+  			.amount{
+  			display: inline;
+  			}
+
+  			#pay{
+  			  margin-top: 10px;
+  			}
+
+  			.form-control, .btn{
+  			    border-radius: 0;
+
+  				.standard-button{
+  				 // background-color: #eebe25;
+  				  color: rgba(0, 0, 0, 0.5);
+  				  text-transform: uppercase;
+  				  padding-top: 12px;
+  				  padding-bottom: 12px;
+  				  padding-left: 35px;
+  				  padding-right: 35px;
+  				  border-radius: 0;
+  				  border:none;
+  				  margin-top: 20px;
+  				  margin-bottom: 20px;
+  				  width: 16em;
+  				  font-weight: 600;
+  				  &:hover, &:active{
+  				    // background-color: #616dab;
+  				    background-color: #4b6a7e;
+  				    color: white;
+  				  }
+
+  				}
+  			}
+
+  			.btn-anim{
+  			  -webkit-transition: all 0.3s;
+  			  -moz-transition: all 0.3s;
+  			  transition: all 0.3s;
+  			}
+
+
+  			.btn-anim:after {
+  			  content: '';
+  			  position: absolute;
+  			  z-index: -1;
+  			  -webkit-transition: all 0.3s;
+  			  -moz-transition: all 0.3s;
+  			  transition: all 0.3s;
+  			}
+  			.form_title {
+  			    font-weight: 500;
+  			    font-size: 15px;
+  			    line-height: 30px;
+  			}
+  			.text_empty {
+  			    text-align: center;
+  			    height: 72px !important;
+  			}
+  			.form_title {
+  			    font-weight: 500;
+  			    font-size: 15px;
+  			    line-height: 30px;
+  			}
+        
+        .modal {
+          z-index: 9999;
+        }
+      </style>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.js"></script>
+        
+      <script type="text/javascript">
+        
+              
+        function calculate() {
+
+          var input = document.getElementById('check-file');
+          if (!input.files.length) {
+            return;
+          }
+
+          var file = input.files[0];
+          var bufferSize = Math.pow(1024, 2) * 10; // 10MB
+
+          calculateMD5Hash(file, bufferSize).then(
+            function(result) {
+              // Success
+              console.log(result);
+              $("#file-checksum").val(result.hashResult);
+              
+            },
+            function(err) {
+              // There was an error,
+            },
+            function(progress) {
+              // We get notified of the progress as it is executed
+              console.log(progress.currentPart, 'of', progress.totalParts, 'Total bytes:', progress.currentPart * bufferSize, 'of', progress.totalParts * bufferSize);
+            });
+        }
+
+        function calculateMD5Hash(file, bufferSize) {
+
+          var def = Q.defer();
+
+          var fileReader = new FileReader();
+          var fileSlicer = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+          var hashAlgorithm = new SparkMD5();
+          var totalParts = Math.ceil(file.size / bufferSize);
+          var currentPart = 0;
+          var startTime = new Date().getTime();
+
+          fileReader.onload = function(e) {
+            currentPart += 1;
+
+            def.notify({
+              currentPart: currentPart,
+              totalParts: totalParts
+            });
+
+            var buffer = e.target.result;
+            hashAlgorithm.appendBinary(buffer);
+
+            if (currentPart < totalParts) {
+              processNextPart();
+              return;
+            }
+
+            def.resolve({
+              hashResult: hashAlgorithm.end(),
+              duration: new Date().getTime() - startTime
+            });
+          };
+
+          fileReader.onerror = function(e) {
+            def.reject(e);
+          };
+
+          function processNextPart() {
+            var start = currentPart * bufferSize;
+            var end = Math.min(start + bufferSize, file.size);
+            fileReader.readAsBinaryString(fileSlicer.call(file, start, end));
+          }
+
+          processNextPart();
+          return def.promise;
+        }
+              
+        if (typeof web3 != 'undefined') {
+          $('.new-registration-options-btn').show();
+        }
+                    
+      </script>
+
+  </template>
