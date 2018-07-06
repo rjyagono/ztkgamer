@@ -27,7 +27,7 @@
                     </nav>
 
                     <div class="login-btn">
-                       {{> loginButtons  align="right"}}
+                        
                     </div>  
                 </div>
                  <!-- mobile menu area start -->
@@ -76,9 +76,8 @@
         </div>
       </header>
     </div>
-      
-    {{#if currentUser }}
-        <div section-scroll='0' class="wd_scroll_wrap">
+
+        <div section-scroll='0'>
 
             <section class="check section">
                <div class="container">
@@ -89,12 +88,12 @@
                     
                   </div>
                     <div class='col-md-4 col-xs-2'></div>
-                    	<div class='col-md-12'>
+                      <div class='col-md-12 cheque'>
                           <br />
                           <div class="center">
-                            <h2 class="modal-title my-modal-label">REGISTER NEW UBETCHECK</h2>
+                            <h2 class="modal-title my-modal-label">REGISTER NEW ZTK Token</h2>
                             <hr />
-                            <p class="h5">EXCHANGE: 1 UBET == <strong>$ {{coinValueInDollar}}</strong></p>
+                            <p class="h5">EXCHANGE: 1 ZTK == <strong>$ {{coinValueInDollar}}</strong></p>
                             {{#if validMetaMaskAddress}}
                               <small>CONTRACT ADDRESS: <strong>{{coinContractAddress}}</strong></small><br />
                             {{else}}
@@ -107,7 +106,7 @@
                           </div>
                           <hr />
                           
-        			           <form class="new-ubetcheck">
+                         <form class="new-ubetcheck">
                          
                           <div class="col-lg-6 col-md-6 ">
                             <div class='form-row'>
@@ -137,23 +136,23 @@
                           </div>
 
                           <div class="col-lg-6 col-md-6 ">
-      		                	 <div class='form-row'>
-      	                        <div class='col-xs-12 form-group card required'>
-      	                          <label class='control-label'>Full Name</label>
-      	                          <input autocomplete='off' class='form-control fullname' required size='20' type='text' name="fullName"  />
-      	                        </div>
-      	                      </div>
-      	                      <div class='form-row'>
-      	                        <div class='col-xs-12 form-group card required'>
-      	                          <label class='control-label'>Amount in $$ ( No Decimal )</label>
-      	                          <input autocomplete='off' class='form-control amount' required size='20' type='number' name="amount" />
+                             <div class='form-row'>
+                                <div class='col-xs-12 form-group card required'>
+                                  <label class='control-label'>Full Name</label>
+                                  <input autocomplete='off' class='form-control fullname' required size='20' type='text' name="fullName"  />
+                                </div>
+                              </div>
+                              <div class='form-row'>
+                                <div class='col-xs-12 form-group card required'>
+                                  <label class='control-label'>Amount in $$ ( No Decimal )</label>
+                                  <input autocomplete='off' class='form-control amount' required size='20' type='number' name="amount" />
                                   <small class="text-right token-convetion-lbl">Please enter dollar amount.</small>
-      	                        </div>
-      	                      </div>
-      	                      <div class='form-row'>
-      	                        <div class='col-xs-12 form-group card'>
-      	                          <label class='control-label'>Digital Check</label>
-      	                          <input type="file" class="file_bag" id="check-file" />
+                                </div>
+                              </div>
+                              <div class='form-row'>
+                                <div class='col-xs-12 form-group card'>
+                                  <label class='control-label'>Digital Check</label>
+                                  <input type="file" class="file_bag" id="check-file" />
                                   <input type="hidden" name="checkFilePath" id="check-file-path" />
                                   <input type="hidden" name="fileChecksum" id="file-checksum" />
                                   
@@ -161,50 +160,50 @@
                                     uploading ... <img src="images/loader.gif" />
                                   </div>
                                   
-      	                        </div>
-      	                      </div>
+                                </div>
+                              </div>
 
-      	                      <div class='form-row new-registration-options-btn' style="">
-      	                        <div class='col-md-12 form-group'>
+                              <div class='form-row new-registration-options-btn' style="">
+                                <div class='col-md-12 form-group'>
                                   <input type="submit" value="Register" class="new-register-btn hide" />
                                   <br />
 
                                   <a class="btn btn-primary verify-record-link">Submit and Verify</a>
-      	                        </div>
-      	                      </div>
-      		                </div>
-      		                     
+                                </div>
+                              </div>
+                          </div>
+                               
                         </form>
                             
                         <br />
                         <br />
 
 
-      	                    <div class='col-md-12'>
-      		                    <div class="row row_exch_history">
+                            <div class='col-md-12'>
+                              <div class="row row_exch_history">
                                 <div class="row form_title">    
                                   
-                                    <br />	            
+                                    <br />              
                                     
-                      	            {{totalUBetCheckAmounts}}
+                                    {{totalUBetCheckAmounts}}
                                     {{totalUBetCoinDistributed}}
                                   
                                     <h3>
-                                      Total UBET Check Amount: <span class="label label-default">$ {{TemplateVar.get 'totalUBetCheckAmounts'}}.00</span>
+                                      Total ZTK Check Amount: <span class="label label-default">$ {{TemplateVar.get 'totalUBetCheckAmounts'}}.00</span>
                                     </h3>
                                     <h3>
                                       Total Coin Distributed From Checks: 
-                                      <span class="label label-default">{{TemplateVar.get 'totalUBetCoinDistributed'}} UBET <img src="images/logo/logo.png" width="25px" /></span>
+                                      <span class="label label-default">{{TemplateVar.get 'totalUBetCoinDistributed'}} ZTK <img src="images/logo/logo.png" width="25px" /></span>
                                     </h3>
 
                                     <hr />                              
-                                    <div class="float_left">UBET CHECK LISTING</div>
+                                    <div class="float_left">ZTK CHECK LISTING</div>
                                     
                                 </div>
                                 
                                 <div class="row">
-      					                  <div class="table_header_block">
-      					                    <table class="table table_exch">
+                                  <div class="table_header_block">
+                                    <table class="table table_exch">
                                       <tbody>
                                         <tr class="table_header">
                                             <td class="th_time">Account No.</td>
@@ -224,7 +223,7 @@
                                             <td>{{routingNumber}}</td>
                                             <td>{{institution}}</td>
                                             <td>{{fullName}}</td>
-                                            <td>${{amount}} / {{tokenPurchase}} UBET</td>
+                                            <td>${{amount}} / {{tokenPurchase}} ZTK</td>
                                             <td>
                                               <span id="status-{{txHash}}">
                                                 {{ubetCheckTxStatus(txHash)}}
@@ -234,17 +233,17 @@
                                         {{/each}}
         
                                       </tbody>
-      					                    </table>
-      					                </div>
-      					                <div class="row pages_block_wrap paginator" id="paginator"></div>
-      					              </div>
-      					            </div>
+                                    </table>
+                                </div>
+                                <div class="row pages_block_wrap paginator" id="paginator"></div>
+                              </div>
+                            </div>
                           </div>
-      	                </div>
+                        </div>
                         <div class='col-md-4 col-xs-2'></div>
-      	         </div>
-      	        </div>        
-      	    </section>
+                 </div>
+                </div>        
+            </section>
             <section>
             
               <!-- Button trigger modal -->
@@ -302,187 +301,5 @@
               </div>
             </section>       
         </div>
-    {{else}}
-            <div section-scroll='0' class="wd_scroll_wrap">
-              <section class="check section">
-                 <div class="container">
-                  <div class='row'>
-                     <div class="container">
-                        <div class="row">
-                          <div class="alert-group"><br>
-                              <div class="alert alert-danger alert-dismissable">
-                                  <strong>Please Login!</strong> You need to login to view this content. 
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-    {{/if}}
       
-      <style>
-        
-  			h4{
-  			    text-align: center;
-  			    padding-top: 15px;
-  			    padding-bottom: 15px;
-  			}
-
-  			.amount{
-  			display: inline;
-  			}
-
-  			#pay{
-  			  margin-top: 10px;
-  			}
-
-  			.form-control, .btn{
-  			    border-radius: 0;
-
-  				.standard-button{
-  				 // background-color: #eebe25;
-  				  color: rgba(0, 0, 0, 0.5);
-  				  text-transform: uppercase;
-  				  padding-top: 12px;
-  				  padding-bottom: 12px;
-  				  padding-left: 35px;
-  				  padding-right: 35px;
-  				  border-radius: 0;
-  				  border:none;
-  				  margin-top: 20px;
-  				  margin-bottom: 20px;
-  				  width: 16em;
-  				  font-weight: 600;
-  				  &:hover, &:active{
-  				    // background-color: #616dab;
-  				    background-color: #4b6a7e;
-  				    color: white;
-  				  }
-
-  				}
-  			}
-
-  			.btn-anim{
-  			  -webkit-transition: all 0.3s;
-  			  -moz-transition: all 0.3s;
-  			  transition: all 0.3s;
-  			}
-
-
-  			.btn-anim:after {
-  			  content: '';
-  			  position: absolute;
-  			  z-index: -1;
-  			  -webkit-transition: all 0.3s;
-  			  -moz-transition: all 0.3s;
-  			  transition: all 0.3s;
-  			}
-  			.form_title {
-  			    font-weight: 500;
-  			    font-size: 15px;
-  			    line-height: 30px;
-  			}
-  			.text_empty {
-  			    text-align: center;
-  			    height: 72px !important;
-  			}
-  			.form_title {
-  			    font-weight: 500;
-  			    font-size: 15px;
-  			    line-height: 30px;
-  			}
-        
-        .modal {
-          z-index: 9999;
-        }
-      </style>
-
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.js"></script>
-        
-      <script type="text/javascript">
-        
-              
-        function calculate() {
-
-          var input = document.getElementById('check-file');
-          if (!input.files.length) {
-            return;
-          }
-
-          var file = input.files[0];
-          var bufferSize = Math.pow(1024, 2) * 10; // 10MB
-
-          calculateMD5Hash(file, bufferSize).then(
-            function(result) {
-              // Success
-              console.log(result);
-              $("#file-checksum").val(result.hashResult);
-              
-            },
-            function(err) {
-              // There was an error,
-            },
-            function(progress) {
-              // We get notified of the progress as it is executed
-              console.log(progress.currentPart, 'of', progress.totalParts, 'Total bytes:', progress.currentPart * bufferSize, 'of', progress.totalParts * bufferSize);
-            });
-        }
-
-        function calculateMD5Hash(file, bufferSize) {
-
-          var def = Q.defer();
-
-          var fileReader = new FileReader();
-          var fileSlicer = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
-          var hashAlgorithm = new SparkMD5();
-          var totalParts = Math.ceil(file.size / bufferSize);
-          var currentPart = 0;
-          var startTime = new Date().getTime();
-
-          fileReader.onload = function(e) {
-            currentPart += 1;
-
-            def.notify({
-              currentPart: currentPart,
-              totalParts: totalParts
-            });
-
-            var buffer = e.target.result;
-            hashAlgorithm.appendBinary(buffer);
-
-            if (currentPart < totalParts) {
-              processNextPart();
-              return;
-            }
-
-            def.resolve({
-              hashResult: hashAlgorithm.end(),
-              duration: new Date().getTime() - startTime
-            });
-          };
-
-          fileReader.onerror = function(e) {
-            def.reject(e);
-          };
-
-          function processNextPart() {
-            var start = currentPart * bufferSize;
-            var end = Math.min(start + bufferSize, file.size);
-            fileReader.readAsBinaryString(fileSlicer.call(file, start, end));
-          }
-
-          processNextPart();
-          return def.promise;
-        }
-              
-        if (typeof web3 != 'undefined') {
-          $('.new-registration-options-btn').show();
-        }
-                    
-      </script>
-
   </template>
