@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Meteor } from 'meteor/meteor';
-import '../imports/api/ubetchecks.js';
+import '../imports/api/ztkgamers.js';
 import { Email } from 'meteor/email'
 import '../imports/api/schema.js';
 import { check } from 'meteor/check'
