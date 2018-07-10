@@ -24,3 +24,6 @@ email@1.2.3
 lepozepo:s3
 underscore@1.0.10
 modules
+accounts-ui
+accounts-password
+frozeman:template-var

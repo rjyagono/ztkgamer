@@ -6,8 +6,8 @@ ZTKGamersChecks = new Mongo.Collection('ZTKGamersChecks');
 
 import './checks.html';
 
-contractOwnerAddress = "0x232d8AF6FC9396105E11D2E011C795262F20a29a";
-contractAddress = "0xC41BbB52df3d97b7EF0E273b10a0Aa01E5ba21Bc";
+contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
+contractAddress = "0xc41bbb52df3d97b7ef0e273b10a0aa01e5ba21bc";
 
 // TEST CONTRACT DETAILS
 // contractSetOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
@@ -613,6 +613,125 @@ Template.checks.onCreated(function onCreated(){
   this.totalZTKCheckAmounts = new ReactiveVar(0);
       
 })
+
+Template.checks.helpers({
+
+  // template: Template.instance(),
+  // uBetCheckContract: web3.eth.contract(ABIArray).at(contractAddress),
+  
+  coinValueInDollar(){
+    return coinValueInDollar;
+  },
+  
+  coinBase(){
+    return web3.eth.accounts[0];
+  },
+  
+  coinContractAddress(){ return contractAddress },
+  
+  coinContractOwnerAddress() { return contractOwnerAddress },
+  
+  uBetCoinName(){
+
+    var template = Template.instance();
+
+    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+
+    uBetCheckContract.name(function(err, res){
+      console.log("COIN NAME");
+      console.log(res);
+      TemplateVar.set(template, 'uBetCoinName', res);
+
+      return res;
+    })
+  },
+  
+  totalUBetCoinDistributed(){
+
+    var template = Template.instance();
+
+    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+
+    uBetCheckContract.tokenSupplyFromCheck(function(err, res){
+      
+      // __coin = Math.floor( res / (10**18) );
+      __coin = res;
+      
+      TemplateVar.set(template, 'totalUBetCoinDistributed', __coin);
+
+      return __coin;
+    })
+
+  },
+
+  totalUBetCheckAmounts(){
+
+    var template = Template.instance();
+
+    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+
+    uBetCheckContract.totalUBetCheckAmounts(function(err, res){
+      console.log("TOTAL AMOUNT UBET CHECK");
+      console.log(res);
+      TemplateVar.set(template, 'totalUBetCheckAmounts', res);
+
+      return res;
+    })
+
+  },
+  
+  validMetaMaskAddress(){
+    return (contractOwnerAddress.toLowerCase() == web3.eth.accounts[0]);    
+  },
+  
+  setContractOwnerAddress(){
+    var template = Template.instance();
+    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+    
+    uBetCheckContract.owner(function(err, res){
+      console.log("contract Adddress");
+      console.log(res);
+      
+      TemplateVar.set(template, 'setContractOwnerAddress', res);
+      return res;
+    })
+    
+    
+  },
+
+  uBetChecks() {
+    return UBetChecks.find({})
+  },
+
+  files() {
+    return S3.collection.find();
+  },
+  
+  ubetCheckTxStatus(txHash){
+        
+    var _status = "PENDING";
+    
+    web3.eth.getTransactionReceipt(txHash, function(err, res){
+      
+      console.log(res);
+      
+      if(res == null){
+        _status =  "PENDING"
+      }else if(res.status == "0x1"){
+        _status = "SUCCESS"
+      }else if(res.status == "0x0") {
+        _status = "FAILED"
+      }
+  
+      $("#status-" + txHash).html(_status);
+      
+    });
+    
+  }
+  
+  
+})
+
  
 Template.checks.events({
 
@@ -636,6 +755,8 @@ Template.checks.events({
     var tokenPurchase = Math.floor(amount / coinValueInDollar);
     
     ztkGamersContract = web3.eth.contract(ABIArray).at(contractAddress);
+    
+    console.log(ztkGamersContract);
     
     var ZTKGamersCheckRecID = "1029393";
     
