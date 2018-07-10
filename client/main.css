@@ -30,7 +30,7 @@ header .login-btn {
 }
 
 .active-logo {
-    max-width: 120px;
+    /*max-width: 120px;*/
     position: relative;
     left: 5px;
     top: -10px;
