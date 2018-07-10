@@ -1394,6 +1394,18 @@ figcaption {
         width: 80%;
     }
 }
+ 
+header .menu-area {
+  text-align: right;
+}
+header .menu-area nav {
+  display: inline-block;
+}
+header .menu-area nav ul li {
+  display: inline-block;
+  position: relative;
+  padding: 0 10px;
+}
 
 @media only screen and (max-width : 600px) {
     
