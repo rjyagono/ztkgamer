@@ -58,7 +58,7 @@
                        </div>
                     </div>
                     <div id="sidebar">
-                       <h1><a href="#">Ubetcoin</a></h1>
+                       <h1><a href="#">s</a></h1>
                        <div id="toggle_close">&times;</div>
                        <div id='cssmenu' class="wd_single_index_menu">
                           <ul>
@@ -107,7 +107,7 @@
                           </div>
                           <hr />
                           
-                         <form class="new-ubetcheck">
+                         <form class="new-ztkcheck">
                          
                           <div class="col-lg-6 col-md-6 ">
                             <div class='form-row'>
@@ -186,15 +186,15 @@
                                   
                                     <br />              
                                     
-                                    {{totalUBetCheckAmounts}}
-                                    {{totalUBetCoinDistributed}}
+                                    {{totalZTKGamersCheckAmounts}}
+                                    {{totalZTKGamersDistributed}}
                                   
                                     <h3>
-                                      Total ZTK Check Amount: <span class="label label-default">$ {{TemplateVar.get 'totalUBetCheckAmounts'}}.00</span>
+                                      Total ZTK Check Amount: <span class="label label-default">$ {{TemplateVar.get 'totalZTKGamersCheckAmounts'}}.00</span>
                                     </h3>
                                     <h3>
                                       Total Coin Distributed From Checks: 
-                                      <span class="label label-default">{{TemplateVar.get 'totalUBetCoinDistributed'}} ZTK <img src="images/logo/logo.png" width="25px" /></span>
+                                      <span class="label label-default">{{TemplateVar.get 'totalZTKGamersDistributed'}} ZTK <img src="images/logo/logo.png" width="25px" /></span>
                                     </h3>
 
                                     <hr />                              
@@ -214,8 +214,8 @@
                                             <td class="th_averange">Amount</td>
                                             <td class="th_averange">Status</td>
                                         </tr>
-        
-                                        {{#each uBetChecks}}
+                                        
+                                        {{#each ZTKGamersChecksLists}}
                                           <tr class="table_body progress">
                                             <td width="15%">
                                               {{accountNumber}}<br />
@@ -227,7 +227,7 @@
                                             <td>${{amount}} / {{tokenPurchase}} ZTK</td>
                                             <td>
                                               <span id="status-{{txHash}}">
-                                                {{ubetCheckTxStatus(txHash)}}
+                                                {{ZTKGamersCheckTxStatus(txHash)}}
                                               </span>
                                             </td>
                                           </tr>
@@ -260,7 +260,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                       
-                      <h3 class="modal-title" id="exampleModalLongTitle">UBET CHECK ENTRY VERIFICATION</h3>
+                      <h3 class="modal-title" id="exampleModalLongTitle">ZTK CHECK ENTRY VERIFICATION</h3>
                     </div>
                     
                     <div class="modal-body">
