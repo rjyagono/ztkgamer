@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Meteor } from 'meteor/meteor';
-import '../imports/api/ubetchecks.js';
+import '../imports/api/ztkchecks.js';
 import { Email } from 'meteor/email'
 import '../imports/api/schema.js';
 import { check } from 'meteor/check'
@@ -20,9 +20,9 @@ Meteor.startup(() => {
 });
 
 S3.config = {
-	key: 'AKIAJQN6HWIUJ3ZPULUA',
-	secret: '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',
-	bucket: 's3-ubetcoin-user-signatures',
+	key: 'AKIAIOWDXS3PQFEOL37A',
+	secret: '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',
+	bucket: 's3-ztktoken-user-signatures',
 	region: 'us-east-1' // Only needed if not "us-east-1" or ""
 };
 
@@ -47,9 +47,9 @@ Meteor.methods({
 
     // Send the e-mail
     Email.send({
-        to: "info@ubetcoin.io",
+        to: "info@ztktoken.io",
         from: doc.email,
-        subject: "Ubetcoin Signup Form - Message From " + doc.lastName,
+        subject: "ZTKToken Signup Form - Message From " + doc.lastName,
         text: text
     });
 
