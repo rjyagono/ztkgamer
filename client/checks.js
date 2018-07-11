@@ -2,12 +2,12 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 //import { EthJS } from 'ethjs';
 
-ZTKGamersChecks = new Mongo.Collection('ZTKGamersChecks');
+ZTKGamersChecks = new Mongo.Collection('ztkchecks');
 
 import './checks.html';
 
 contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
-contractAddress = "0xc41bbb52df3d97b7ef0e273b10a0aa01e5ba21bc";
+contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
 
 // TEST CONTRACT DETAILS
 // contractSetOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
@@ -609,15 +609,12 @@ Template.checks.onCreated(function onCreated(){
 
   var template = this;
   
-  this.uBetCoinName = new ReactiveVar(0);
+  this.ztkGamersCoinName = new ReactiveVar(0);
   this.totalZTKCheckAmounts = new ReactiveVar(0);
       
 })
 
 Template.checks.helpers({
-
-  // template: Template.instance(),
-  // uBetCheckContract: web3.eth.contract(ABIArray).at(contractAddress),
   
   coinValueInDollar(){
     return coinValueInDollar;
@@ -630,50 +627,31 @@ Template.checks.helpers({
   coinContractAddress(){ return contractAddress },
   
   coinContractOwnerAddress() { return contractOwnerAddress },
-  
-  uBetCoinName(){
+    
+  totalZTKGamersDistributed(){
 
     var template = Template.instance();
 
-    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+    ztkGamersContract = web3.eth.contract(ABIArray).at(contractAddress);
 
-    uBetCheckContract.name(function(err, res){
-      console.log("COIN NAME");
-      console.log(res);
-      TemplateVar.set(template, 'uBetCoinName', res);
-
-      return res;
-    })
-  },
-  
-  totalUBetCoinDistributed(){
-
-    var template = Template.instance();
-
-    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
-
-    uBetCheckContract.tokenSupplyFromCheck(function(err, res){
-      
-      // __coin = Math.floor( res / (10**18) );
+    ztkGamersContract.tokenSupplyFromCheck(function(err, res){
       __coin = res;
-      
-      TemplateVar.set(template, 'totalUBetCoinDistributed', __coin);
+      TemplateVar.set(template, 'totalZTKGamersDistributed', __coin);
 
       return __coin;
     })
 
   },
 
-  totalUBetCheckAmounts(){
+  totalZTKGamersCheckAmounts(){
 
     var template = Template.instance();
 
-    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+    ztkGamersContract = web3.eth.contract(ABIArray).at(contractAddress);
 
-    uBetCheckContract.totalUBetCheckAmounts(function(err, res){
-      console.log("TOTAL AMOUNT UBET CHECK");
+    ztkGamersContract.totalZTKCheckAmounts(function(err, res){
       console.log(res);
-      TemplateVar.set(template, 'totalUBetCheckAmounts', res);
+      TemplateVar.set(template, 'totalZTKGamersCheckAmounts', res);
 
       return res;
     })
@@ -686,9 +664,9 @@ Template.checks.helpers({
   
   setContractOwnerAddress(){
     var template = Template.instance();
-    uBetCheckContract = web3.eth.contract(ABIArray).at(contractAddress);
+    ztkGamersContract = web3.eth.contract(ABIArray).at(contractAddress);
     
-    uBetCheckContract.owner(function(err, res){
+    ztkGamersContract.owner(function(err, res){
       console.log("contract Adddress");
       console.log(res);
       
@@ -699,15 +677,15 @@ Template.checks.helpers({
     
   },
 
-  uBetChecks() {
-    return UBetChecks.find({})
+  ZTKGamersChecksLists() {
+    return ZTKGamersChecks.find({})
   },
 
   files() {
     return S3.collection.find();
   },
   
-  ubetCheckTxStatus(txHash){
+  ZTKGamersCheckTxStatus(txHash){
         
     var _status = "PENDING";
     
@@ -817,7 +795,7 @@ Template.checks.events({
     
     $(".loader").show()
     
-    calculate();
+    // calculate();
         
     S3.upload({
         files:files,
