@@ -337,7 +337,7 @@ nav a, nav a:visited {
     border-bottom: 1px solid gray;
 }
 .hero {
-    background: url('http://localhost:8888/ztkgamers/wp-content/uploads/2018/07/hero-no-blur.png') no-repeat center center;
+    background: url('images/hero-no-blur.png') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
