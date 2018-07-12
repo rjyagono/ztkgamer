@@ -283,7 +283,7 @@
                         <input autocomplete='off' class='form-control ver-fullname' size='20' type='text' disabled />
                         
                         <label class='control-label'>Amount in $$ ( No Decimal )</label>
-                        <input autocomplete='off' class='form-control ver-amount' required size='20' type='number' disabled />
+                        <input autocomplete='off' class='form-control ver-amount' required size='20' type='text' disabled />
                         
                         <label class='control-label'>Total Coin To Send</label>
                         <input autocomplete='off' class='form-control ver-token-to-send' required size='20' type='text' disabled />
@@ -302,6 +302,178 @@
               </div>
             </section>       
         </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.js"></script>
+        
+        <style>
+        
+    			h4{
+    			    text-align: center;
+    			    padding-top: 15px;
+    			    padding-bottom: 15px;
+    			}
+
+    			.amount{
+    			display: inline;
+    			}
+
+    			#pay{
+    			  margin-top: 10px;
+    			}
+
+    			.form-control, .btn{
+    			    border-radius: 0;
+
+    				.standard-button{
+    				 // background-color: #eebe25;
+    				  color: rgba(0, 0, 0, 0.5);
+    				  text-transform: uppercase;
+    				  padding-top: 12px;
+    				  padding-bottom: 12px;
+    				  padding-left: 35px;
+    				  padding-right: 35px;
+    				  border-radius: 0;
+    				  border:none;
+    				  margin-top: 20px;
+    				  margin-bottom: 20px;
+    				  width: 16em;
+    				  font-weight: 600;
+    				  &:hover, &:active{
+    				    // background-color: #616dab;
+    				    background-color: #4b6a7e;
+    				    color: white;
+    				  }
+
+    				}
+    			}
+
+    			.btn-anim{
+    			  -webkit-transition: all 0.3s;
+    			  -moz-transition: all 0.3s;
+    			  transition: all 0.3s;
+    			}
+
+
+    			.btn-anim:after {
+    			  content: '';
+    			  position: absolute;
+    			  z-index: -1;
+    			  -webkit-transition: all 0.3s;
+    			  -moz-transition: all 0.3s;
+    			  transition: all 0.3s;
+    			}
+    			.form_title {
+    			    font-weight: 500;
+    			    font-size: 15px;
+    			    line-height: 30px;
+    			}
+    			.text_empty {
+    			    text-align: center;
+    			    height: 72px !important;
+    			}
+    			.form_title {
+    			    font-weight: 500;
+    			    font-size: 15px;
+    			    line-height: 30px;
+    			}
+        
+          .modal {
+            z-index: 9999;
+          }
+          
+          .form-control input{
+            background-color: #fff;
+            color: black;
+          }
+          
+          .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+            color: black;
+          }
+        </style>
+        
+        <script type="text/javascript">
+  
+          function calculate() {
+
+            var input = document.getElementById('check-file');
+            if (!input.files.length) {
+              return;
+            }
+
+            var file = input.files[0];
+            var bufferSize = Math.pow(1024, 2) * 10; // 10MB
+
+            calculateMD5Hash(file, bufferSize).then(
+              function(result) {
+                // Success
+                console.log(result);
+                $("#file-checksum").val(result.hashResult);
+              
+              },
+              function(err) {
+                // There was an error,
+              },
+              function(progress) {
+                // We get notified of the progress as it is executed
+                console.log(progress.currentPart, 'of', progress.totalParts, 'Total bytes:', progress.currentPart * bufferSize, 'of', progress.totalParts * bufferSize);
+              });
+          }
+
+          function calculateMD5Hash(file, bufferSize) {
+
+            var def = Q.defer();
+
+            var fileReader = new FileReader();
+            var fileSlicer = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+            var hashAlgorithm = new SparkMD5();
+            var totalParts = Math.ceil(file.size / bufferSize);
+            var currentPart = 0;
+            var startTime = new Date().getTime();
+
+            fileReader.onload = function(e) {
+              currentPart += 1;
+
+              def.notify({
+                currentPart: currentPart,
+                totalParts: totalParts
+              });
+
+              var buffer = e.target.result;
+              hashAlgorithm.appendBinary(buffer);
+
+              if (currentPart < totalParts) {
+                processNextPart();
+                return;
+              }
+
+              def.resolve({
+                hashResult: hashAlgorithm.end(),
+                duration: new Date().getTime() - startTime
+              });
+            };
+
+            fileReader.onerror = function(e) {
+              def.reject(e);
+            };
+
+            function processNextPart() {
+              var start = currentPart * bufferSize;
+              var end = Math.min(start + bufferSize, file.size);
+              fileReader.readAsBinaryString(fileSlicer.call(file, start, end));
+            }
+
+            processNextPart();
+            return def.promise;
+          }
+              
+          if (typeof web3 != 'undefined') {
+            $('.new-registration-options-btn').show();
+          }
+                    
+        </script>
+        
+        
     {{else}}
             <div section-scroll='0' class="wd_scroll_wrap">
               <section class="check section">

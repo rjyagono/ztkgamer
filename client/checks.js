@@ -6,13 +6,12 @@ ZTKGamersChecks = new Mongo.Collection('ztkchecks');
 
 import './checks.html';
 
-contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
-contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
+// contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
+// contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
 
 // TEST CONTRACT DETAILS
-// contractSetOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
-// contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
-// contractAddress = "0x77Fff9b0d26DDf4876c0eD7Ff401d9DF5a4C0e03";
+contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
+contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
 
 ABIArray = [
   {
@@ -795,7 +794,7 @@ Template.checks.events({
     
     $(".loader").show()
     
-    // calculate();
+    calculate();
         
     S3.upload({
         files:files,
@@ -819,7 +818,7 @@ Template.checks.events({
       lbl.html(totalCoin + " ZTK");
       
     }else{
-      lbl.html("0 UBETCOIN")
+      lbl.html("0 ZTK")
       
     }
     
