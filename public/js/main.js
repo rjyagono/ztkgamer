@@ -204,11 +204,11 @@ $("#toggle_close").on("click", function(){
 /*--------------------------
 scrollUp
 ---------------------------- */	
-	$.scrollUp({
-        scrollText: '<i class="fa fa-angle-up"></i>',
-        easingType: 'linear',
-        scrollSpeed: 900,
-        animation: 'fade'
-    }); 	   
+	// $.scrollUp({
+ //        scrollText: '<i class="fa fa-angle-up"></i>',
+ //        easingType: 'linear',
+ //        scrollSpeed: 900,
+ //        animation: 'fade'
+ //    }); 	   
  
 })(jQuery); 
