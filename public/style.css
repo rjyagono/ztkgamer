@@ -1552,3 +1552,7 @@ header .menu-area nav ul li {
   background-color: #fff;
   margin-bottom: 50px;
 }
+
+input[type="text"] {
+  color: #000;
+}
