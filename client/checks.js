@@ -771,6 +771,7 @@ Template.checks.events({
           });
           
           // Clear form
+          target.beneficiaryAddress.value = '';
           target.accountNumber.value = '';
           target.routingNumber.value = '';
           target.institution.value = '';
