@@ -10,8 +10,8 @@ import './checks.html';
 // contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
 
 // TEST CONTRACT DETAILS
-contractOwnerAddress = "0x232d8af6fc9396105e11d2e011c795262f20a29a";
-contractAddress = "0xc59372c37e7121c73cf481d9c9446c6f01bcf058";
+contractOwnerAddress = "0x2dd21abdf4c2d4a63dbe95e64262e823be2ed146";
+contractAddress = "0xa211db1867e4fa5dc0dd4d8f51f177a51d054d94";
 
 ABIArray = [
   {
@@ -591,7 +591,6 @@ ABIArray = [
     "type":"event"
   }
 ];
-
 
 coinValueInDollar = 0.25;
 
